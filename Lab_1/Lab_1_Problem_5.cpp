@@ -2,6 +2,56 @@
 #include<string>
 #include<stack>
 using namespace std;
+int Is_prime(string);
+string Multiply_fun(string,string);
+string Add_fun(string,string);
+string Div_fun(string,string,char);
+
+
+int main()
+{
+  int t;
+  string a;
+  cin>>t;
+  while(t!=0)
+  {
+    cin>>a;
+    if(Is_prime(a))
+    {
+      cout<<"Prime"<<"\n";
+    }
+    else
+    {
+      cout<<"Not a Prime"<<"\n";
+    }
+    t--;
+  }
+}
+
+int Is_prime(string a)
+{
+  //cout<<"ko"<<"\n";
+  int c=0;
+    string d,d2;
+    d="2";
+    d2="2";
+    //cout<<"ko1"<<"\n";
+    //cout<<a<<"\n";
+    //cout<<Multiply_fun(d2,d)<<"\n";
+    //cout<<Div_fun(a,d,'r');
+    while((a.size()>Multiply_fun(d,d).size())||((a.size()==Multiply_fun(d,d).size())&&(a>Multiply_fun(d,d))))
+    {
+        //cout<<"ko2"<<"\n";
+        //cout<<d<<"\n";
+        if(Div_fun(a,d,'r')=="0") c++;
+        if(c!=0) return 0;
+        d=Add_fun(d,"1");
+    }
+    //cout<<"ko3"<<"\n";
+    if(Div_fun(a,d,'r')=="0") return 0;
+    else return 1;
+}
+
 
 
 string Add_fun(string a,string b)
@@ -192,7 +242,7 @@ string Multiply_fun(string a,string b)
     if(s2.size()!=0 || b[i]!='0') s2.push(b[i]-'0');
   }
 
-	if(a=="1") return b;
+  if(a=="1") return b;
   else if(b=="1") return a;
   else if((a=="2")&&(b=="2")) return "4";
   else if((a=="3")&&(b=="2")) return "6";
@@ -286,28 +336,4 @@ string Div_fun(string a,string b,char p)
     //cout<<"kkkk"<<"\n"<<qo<<" "<<a1<<"\n";
     if(p=='q') return qo;
     else if (p=='r') return a1;
-}
-
-int main()
-{
-	int t;
-	cin>>t;
-	string ansq[t];
-	string ansr[t];
-	string a,b;
-	int i=0;
-	while(t!=i)
-	{
-		cin>>a;
-		cin>>b;
-		ansq[i]=Div_fun(a,b,'q');
-		ansr[i]=Div_fun(a,b,'r');
-		i++;
-	}
-	i=0;
-	while(t!=i)
-	{
-		cout<<ansq[i]<<"\n"<<ansr[i]<<"\n";
-		i++;
-	}
 }

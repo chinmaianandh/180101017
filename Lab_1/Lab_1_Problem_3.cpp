@@ -4,7 +4,7 @@
 using namespace std;
 
 
-string add_fun(string a,string b)
+string Add_fun(string a,string b)
 {
 	string out = "";
 	int c=0;
@@ -113,6 +113,12 @@ string Multiply_fun(string a,string b)
     if(s2.size()!=0 || b[i]!='0') s2.push(b[i]-'0');
   }
 
+	if(a=="1") return b;
+  else if(b=="1") return a;
+  else if((a=="2")&&(b=="2")) return "4";
+	else if((a=="3")&&(b=="2")) return "6";
+	else if((b=="3")&&(a=="2")) return "6";
+	else if((a=="3")&&(b=="3")) return "9";
 
   for(int i=0;s1.size()!=0;i++)
   {
@@ -126,7 +132,7 @@ string Multiply_fun(string a,string b)
         st.append("0");
         k++;
       }
-      out = add_fun(out,st);
+      out = Add_fun(out,st);
       temp.pop();
     }
     s1.pop();
@@ -137,24 +143,37 @@ string Multiply_fun(string a,string b)
 }
 
 
+//int main()
+//{
+//	int t;
+//	cin>>t;
+//	string ans[t];
+//	string a,b;
+//	int i=0;
+//	while(t!=i)
+//	{
+//		cin>>a;
+//		cin>>b;
+//		ans[i]=Multiply_fun(a,b);
+//		i++;
+//	}
+//	i=0;
+//	while(t!=i)
+//	{
+//		cout<<ans[i]<<"\n";
+//		i++;
+//	}
+//}
+
 int main()
 {
 	int t;
 	cin>>t;
-	string ans[t];
 	string a,b;
-	int i=0;
-	while(t!=i)
+	while(t!=0)
 	{
-		cin>>a;
-		cin>>b;
-		ans[i]=Multiply_fun(a,b);
-		i++;
-	}
-	i=0;
-	while(t!=i)
-	{
-		cout<<ans[i]<<"\n";
-		i++;
+			cin>>a>>b;
+			cout<<Multiply_fun(a,b)<<"\n";
+			t--;
 	}
 }
