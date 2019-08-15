@@ -20,33 +20,53 @@ node *AddFirst(node *head,int a,int b)
 
 node *DelFirst(node *head)
 {
-	node *temp;
-	temp=head->p;
-	free(head);
-	return temp;
+	if(head==NULL)
+	{
+		cout<<"-1"<<endl;
+		return head;
+	}
+	else
+	{
+		node *temp;
+		temp=head->p;
+		free(head);
+		return temp;
+	}
 }
 
 node *Del(node *head,int a,int b)
 {
-	if((head->x==a)&&(head->y==b)) return DelFirst(head);
-	node *temp;
-	temp=head;
-	while(temp->p!=NULL)
+	if(head==NULL)
 	{
-		if((temp->p->x==a)&&(temp->p->y==b))
+		cout<<"-1"<<endl;
+		return head;
+	}
+	else
+	{
+		char o='o';
+		if((head->x==a)&&(head->y==b)) return DelFirst(head);
+		node *temp;
+		temp=head;
+		while(temp->p!=NULL)
 		{
-			node *temp2=temp->p;
-			temp->p=temp->p->p;
-			free(temp2);
-			break;
+			if((temp->p->x==a)&&(temp->p->y==b))
+			{
+				o='p';
+				node *temp2=temp->p;
+				temp->p=temp->p->p;
+				free(temp2);
+				break;
+			}
+			temp = temp->p;
 		}
-		temp = temp->p;
+		if(o=='o') cout<<"-1"<<endl;
 	}
 	return head;
 }
 
 void Search_Dist(node *head,float d)
 {
+	int count=0;
 	node *temp;
 	temp=head;
 	while(temp!=NULL)
@@ -55,11 +75,11 @@ void Search_Dist(node *head,float d)
 		int b=temp->y;
 		if(a*a+b*b<=d*d)
 		{
-			cout<<"("<<a<<","<<b<<") ";
+			count++;
 		}
 		temp = temp->p;
 	}
-	cout<<endl;
+	cout<<count<<endl;
 }
 
 bool Search(node *head,int a,int b)
