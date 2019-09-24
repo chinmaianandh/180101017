@@ -78,9 +78,9 @@ int main()
       f++;
     }*/
     int mid=n/2;
-    int w;
-    if(n%2==0) w=A[mid-1]/1;
-    else w=A[mid]/1;
+    float w;
+    if(n%2==0) w=A[mid-1];
+    else w=A[mid];
     cout<<w<<endl;
   }
 }
