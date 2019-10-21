@@ -28,7 +28,7 @@ int main()
   {
     int x,y;
     cin>>x>>y;
-    A[x][y]=1;
+    A[x-1][y-1]=1;
   }
   //vector<vector<bool>> V;
   vector<bool> W;
